@@ -131,6 +131,30 @@ app.delete("/deleteUser", function(req, res) {
         res.json({
             message: err.message,
         })
+
+        // res.statusCode this is default NodeJS http module property for setting the statusCode, 
+        // res.status -> express provided to set the status code and also provides chaining
     }
 })
 
+// generally for the post request we send the data inside the body
+// fetch -> is used in nodeJS application to send request to the http server
+// instead of using the in-house-storage we will be using databases
+// Default status code for every route-handler is 200
+
+// There are two types of parameters 1. Query Params (specified using ? this in req get as req.query.variableName) 2. Route Params (: this in the req can get as req.params.variableName that we mentioned in the route) -> These are the part of the route and gets mapped according to the user send the request
+
+
+// route-handler with route parameters -> the user will send the fileName to whose content to be read
+app.get("/files/:fileName", function(req, res) {
+    // the user will send the request to route as localhost:3000/files/a.txt(this can be variable but only structure of the route so only be like otherwise it will be send to some other route that exist)
+    const fileName = req.params.fileName;
+
+    // first check if this exist in the folder
+})
+
+function promiseReadFile(path) {
+    return new Promise(function(resolve, reject) {
+        fs.read
+    })
+}
